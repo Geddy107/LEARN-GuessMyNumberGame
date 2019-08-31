@@ -6,12 +6,20 @@ namespace GuessMyNumberGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What game would you like to play?");
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("1. Have the computer try to guess your number.");
-            Console.WriteLine("2. You try to guess the computer's number.");
+            int gameSelect = 0;
+            while (gameSelect != 1 || gameSelect != 2)
+            {
+                Console.WriteLine("What game would you like to play?");
+                Console.WriteLine("----------------------------------");
+                Console.WriteLine("1. Have the computer try to guess your number.");
+                Console.WriteLine("2. You try to guess the computer's number.");
 
-            int gameSelect = Console.Read();
+                gameSelect = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+
+            }
+
 
             switch (gameSelect)
             {
@@ -64,12 +72,55 @@ namespace GuessMyNumberGame
                     break;
 
                 case 2:
+                    int mini = 0;
+                    int maxi = 0;
+                    Console.WriteLine("Please enter the range of numbers to guess from");
+                    Console.WriteLine("----------------------------------");
+
+                    Console.WriteLine("Enter minimum value");
+                    mini = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Enter maximum value");
+                    maxi = int.Parse(Console.ReadLine());
+
+                    Random Rand = new Random();
+                    int computerNumber = Rand.Next(mini, maxi);
+
+                    Console.WriteLine($"The computer has selected a number try to guess");
+
+                    usrInp = 0;
+                    Console.Clear();
+                    
+
+                    while (computerNumber != usrInp)
+                    {
+                        Console.WriteLine($"Guess the number.");
+                        Console.WriteLine("------------------------------");
+                        usrInp = int.Parse(Console.ReadLine());
+
+                        if (computerNumber > usrInp)
+                        {
+                            Console.WriteLine("You are low");
+                        }
+                        
+                        if (computerNumber < usrInp)
+                        {
+                            Console.WriteLine("You are high");
+                        }
+
+                        else if (computerNumber == usrInp)
+                        {
+                            Console.WriteLine("CONGRATS YOU GUESSED IT!");
+                        }
 
 
+                    }
                     break;
 
 
                 default:
+
+                    Console.WriteLine("Sorry you have entered an incorrect number. Please try again.");
                     break;
             }
 
