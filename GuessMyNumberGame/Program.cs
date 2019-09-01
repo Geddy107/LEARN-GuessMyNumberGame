@@ -6,24 +6,19 @@ namespace GuessMyNumberGame
     {
         static void Main(string[] args)
         {
-            int gameSelect = 0;
-            while (gameSelect != 1 || gameSelect != 2)
-            {
-                Console.WriteLine("What game would you like to play?");
-                Console.WriteLine("----------------------------------");
-                Console.WriteLine("1. Have the computer try to guess your number.");
-                Console.WriteLine("2. You try to guess the computer's number.");
 
-                gameSelect = int.Parse(Console.ReadLine());
-                Console.Clear();
+            Console.WriteLine("What game would you like to play?");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("1. Have the computer try to guess your number.");
+            Console.WriteLine("2. You try to guess the computer's number.");
 
+            ConsoleKey gameSelect = Console.ReadKey().Key;
 
-            }
-
+            Console.Clear();
 
             switch (gameSelect)
             {
-                case 1:
+                case ConsoleKey.D1:
                     Console.WriteLine("Please enter your number range.");
                     Console.WriteLine("----------------------------------");
 
@@ -53,7 +48,7 @@ namespace GuessMyNumberGame
                         {
                             Console.Clear();
                             Console.WriteLine($"I guessed it your number is {usrInp}");
-                            break;
+                            
                         }
                         ConsoleKey input = Console.ReadKey().Key;
 
@@ -68,10 +63,11 @@ namespace GuessMyNumberGame
                             min = avg;
                         }
 
+                        Console.Clear();
                     }
                     break;
 
-                case 2:
+                case ConsoleKey.D2:
                     int mini = 0;
                     int maxi = 0;
                     Console.WriteLine("Please enter the range of numbers to guess from");
@@ -90,7 +86,6 @@ namespace GuessMyNumberGame
 
                     usrInp = 0;
                     Console.Clear();
-                    
 
                     while (computerNumber != usrInp)
                     {
@@ -102,7 +97,7 @@ namespace GuessMyNumberGame
                         {
                             Console.WriteLine("You are low");
                         }
-                        
+
                         if (computerNumber < usrInp)
                         {
                             Console.WriteLine("You are high");
@@ -113,30 +108,14 @@ namespace GuessMyNumberGame
                             Console.WriteLine("CONGRATS YOU GUESSED IT!");
                         }
 
-
                     }
                     break;
-
 
                 default:
 
                     Console.WriteLine("Sorry you have entered an incorrect number. Please try again.");
                     break;
             }
-
-
-
-
-
-
         }
-
-
-
-
-
-
-
-
     }
 }
